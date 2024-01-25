@@ -7,16 +7,21 @@ const NavBar = () => {
     <header>
       <h1>Mi Tienda</h1>
       <nav>
-        <ul>
-          <li>Productos 1</li>
-          <li>Productos 2</li>
-          <li>Productos 3</li>
-          <li>Productos 4</li>
+       <ul>
+         <li>
+           <NavLink to="/categoria/1">
+             Shonen
+           </NavLink>
+         </li>
+
+         <li>
+           <NavLink to="/categoria/2">
+             Spokon
+           </NavLink>
+         </li>
         </ul>
       </nav>
-
       <CartWidget />
-
     </header>
   );
 }

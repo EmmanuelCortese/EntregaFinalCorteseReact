@@ -3,12 +3,8 @@ import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 import './ItemDetail.css';
 
-import { useContext } from 'react';
-
 const ItemDetail = ({id, nombre, stock, precio, img}) => { 
   const [agregarCantidad, setAgregarCantidad] = useState(0);
-
-  const {agregarAlCarrito} = useContext(CarritoContext);
 
   const manejadorCantidad =  (cantidad) => {
     setAgregarCantidad(cantidad);
