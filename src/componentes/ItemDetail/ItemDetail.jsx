@@ -16,7 +16,7 @@ const ItemDetail = ({ id, nombre, stock, precio, img, descripcion }) => { // Agr
 
   return (
     <div className='contenedorItem'>
-      <h2>Nombre: {nombre} </h2>
+      <h2> {nombre} </h2>
       <p>Sinopsis: {descripcion}</p> {/* Muestra la descripción aquí */}
       <img src={img} alt={nombre} />
 
