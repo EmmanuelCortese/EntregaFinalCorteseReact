@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { CarritoContext } from "../../context/CarritoContext";
 import { db } from "../../services/config";
 import { collection, addDoc, updateDoc, getDoc, doc } from "firebase/firestore";
@@ -94,7 +94,7 @@ const Checkout = () => {
     }
 
     return (
-        <div>
+        <div className="contenedorCart">
             <h2>Checkout - Finalizamos la Compra </h2>
 
             <form onSubmit={manejadorSubmit}>
@@ -110,27 +110,27 @@ const Checkout = () => {
 
                 <div className="form-group">
                     <label htmlFor="nombre"> Nombre </label>
-                    <input type="text" value={nombre} id="nombre" onChange={(e) => setNombre(e.target.value)} />
+                    <input type="text" value={nombre} id="nombre" onChange={(e) => setNombre(e.target.value)} style={{border: '1px solid black'}} />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="apellido"> Apellido </label>
-                    <input type="text" value={apellido} id="apellido" onChange={(e) => setApellido(e.target.value)} />
+                    <input type="text" value={apellido} id="apellido" onChange={(e) => setApellido(e.target.value)} style={{border: '1px solid black'}} />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="telefono"> Telefono </label>
-                    <input type="text" value={telefono} id="telefono" onChange={(e) => setTelefono(e.target.value)} />
+                    <input type="text" value={telefono} id="telefono" onChange={(e) => setTelefono(e.target.value)} style={{border: '1px solid black'}} />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="email"> E-mail </label>
-                    <input type="email" value={email} id="email" onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" value={email} id="email" onChange={(e) => setEmail(e.target.value)} style={{border: '1px solid black'}} />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="emailcon"> Email Confirmación </label>
-                    <input type="email" value={emailConfirmacion} id="emailcon" onChange={(e) => setEmailConfirmacion(e.target.value)} />
+                    <input type="email" value={emailConfirmacion} id="emailcon" onChange={(e) => setEmailConfirmacion(e.target.value)} style={{border: '1px solid black'}} />
                 </div>
 
                 {

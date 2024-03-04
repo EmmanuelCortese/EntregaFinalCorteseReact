@@ -1,0 +1,43 @@
+.contenedorCart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+    padding-bottom: 2.5rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px orange;
+    border-radius: 5px;
+    margin: 3rem auto;
+    max-width: 800px;
+    font-family: 'Madimi One';
+  }
+  
+  .contenedorCart h2 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contenedorCart h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contenedorCart p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: -0.5rem;
+    margin-top: 5px;
+  }
+  
+  .contenedorCart img.imagenProducto {
+    width: 100px;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .contenedorCart .miBtn {
+    margin-top: 15px;
+  }
+  
