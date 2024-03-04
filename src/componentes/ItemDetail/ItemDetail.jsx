@@ -23,6 +23,7 @@ const ItemDetail = ({ id, nombre, stock, precio, img, descripcion }) => { // Agr
       {
         agregarCantidad > 0 ? (<Link className='miBtn' to="/cart"> Terminar compra</Link>) : (<ItemCount inicial={1} stock={stock} funcionAgregar={manejadorCantidad} />)
       }
+      
     </div>
   )
 }

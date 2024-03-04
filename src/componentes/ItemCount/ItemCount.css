@@ -1,26 +1,31 @@
+.contenedorBotones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .miBtn {
     background-color: #c1101a;
     border: none;
     color: white;
-    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 5px;
     cursor: pointer;
+    font-family: 'Madimi One';
 }
 
 p {
-    font-size: 24px;
+    font-size: 25px;
     font-weight: bold;
-    margin: 0 10px;
+    margin: 30px;
 }
 
 
 
 .miBtn {
-    background-color: #c1101a;
+    background-color: grey;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -33,5 +38,5 @@ p {
 }
 
 .miBtn:hover {
-    background-color: #a10814;
+    background-color: orange;
 }

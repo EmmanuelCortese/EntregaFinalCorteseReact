@@ -4,9 +4,9 @@ import ItemListContainer from './componentes/ItemListContainer/ItemListContainer
 import ItemDetailContainer from './componentes/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CarritoProvider } from './context/CarritoContext'; 
-
 import Cart from './componentes/Cart/Cart';
 import Checkout from './componentes/Checkout/Checkout';
+import './styles.css';
 
 
 const App = () => {

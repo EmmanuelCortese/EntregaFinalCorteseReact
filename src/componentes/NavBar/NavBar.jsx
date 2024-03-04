@@ -31,6 +31,42 @@ const NavBar = () => {
                   </NavLink>
                 </li>
 
+                <li>
+                  <NavLink className="miBtn" to="/categoria/4">
+                    Shojo
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink className="miBtn" to="/categoria/5">
+                    Isekai
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink className="miBtn" to="/categoria/6">
+                    Romakome
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink className="miBtn" to="/categoria/7">
+                    Mecha
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink className="miBtn" to="/categoria/8">
+                    Horror
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink className="miBtn" to="/categoria/9">
+                    Ciberpunk
+                  </NavLink>
+                </li>
+
             </ul>
         </nav>
         

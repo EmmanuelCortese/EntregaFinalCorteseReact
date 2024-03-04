@@ -22,7 +22,7 @@ const ItemCount = ({inicial, stock, funcionAgregar }) => {
 
   return (
     <>
-    <div>
+    <div className="contenedorBotones">
         <button className="miBtn" onClick={decrementar}> - </button>
         <p> {contador} </p>
         <button className="miBtn" onClick={incrementar}> + </button>

@@ -1,8 +1,9 @@
 header {
     display: flex;
+    background-color: #fff;
     align-items: center;
     justify-content: space-around;
-    border-bottom: 1px solid black;
+    border-bottom: 5px solid orange;
 }
 
 li {
@@ -13,4 +14,5 @@ li {
 
 .logo {
     width: 150px;
+    padding-top: 5px;
 }
