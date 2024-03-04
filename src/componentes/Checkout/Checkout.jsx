@@ -13,58 +13,84 @@ const Checkout = () => {
     const [telefono, setTelefono] = useState("");
     const [email, setEmail] = useState("");
     const [emailConfirmacion, setEmailConfirmacion] = useState("");
-    const [ordenId, setOrdenId] = useState("");
     const [error, setError] = useState("");
 
     const manejadorSubmit = (event) => {
         event.preventDefault();
 
         if (!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
-            setError("¡Por favor completa todos los campos o moriremos!");
+            Swal.fire({
+                icon: "error",
+                title: "Complete todos los campos",
+                text: "Debe registrar todos los campos para poder finalizar su compra!"
+            });
             return;
         }
 
         if (email !== emailConfirmacion) {
-            setError("Los emails no coinciden, rata de dos patas!");
+            Swal.fire({
+                icon: "error",
+                title: "Email Incorrecto",
+                text: "Los emails no coinciden, verifique nuevamente los campos."
+            });
             return;
         }
 
-        const orden = {
-            items: carrito.map(producto => ({
-                id: producto.item.id,
-                nombre: producto.item.nombre,
-                cantidad: producto.cantidad
-            })),
-            total: total,
-            fecha: new Date(),
-            nombre,
-            apellido,
-            telefono,
-            email
-        }
+        Swal.fire({
+            title: "Desea finalizar su compra?",
+            text: "Verifique su carrito antes de finalizar su compra.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Finalizar compra",
+            cancelButtonText: "Volver al carrito"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const orden = {
+                    items: carrito.map(producto => ({
+                        id: producto.item.id,
+                        nombre: producto.item.nombre,
+                        cantidad: producto.cantidad
+                    })),
+                    total: total,
+                    fecha: new Date(),
+                    nombre,
+                    apellido,
+                    telefono,
+                    email
+                }
 
+                Promise.all(
+                    orden.items.map(async (productoOrden) => {
+                        const productoRef = doc(db, "inventario", productoOrden.id);
+                        const productoDoc = await getDoc(productoRef);
+                        const stockActual = productoDoc.data().stock;
 
-        Promise.all(
-            orden.items.map( async (productoOrden) => {
-                const productoRef = doc(db, "inventario", productoOrden.id);
-                const productoDoc = await getDoc(productoRef);
-                const stockActual = productoDoc.data().stock;
-
-                await updateDoc(productoRef, {stock: stockActual - productoOrden.cantidad}); 
-            })
-        )
-        .then(()=> {
-            addDoc(collection(db, "ordenes"), orden)
-                .then(docRef => {
-                    setOrdenId(docRef.id);
-                    vaciarCarrito();
-                })
-                .catch(error => console.log("Error al crear la orden", error))
-        })
-        .catch(error => {
-            console.log("No pudimos actualizar el stock", error);
-            setError("Error al actualizar el stock");
-        })
+                        await updateDoc(productoRef, { stock: stockActual - productoOrden.cantidad });
+                    })
+                )
+                    .then(() => {
+                        addDoc(collection(db, "ordenes"), orden)
+                            .then(docRef => {
+                                Swal.fire({
+                                    title: "Compra finalizada!",
+                                    text: `Tu número de orden es: ${docRef.id}`,
+                                    icon: "success"
+                                });
+                                vaciarCarrito();
+                            })
+                            .catch(error => {
+                                console.log("Error al crear la orden", error);
+                                setError("Error al crear la orden");
+                            })
+                    })
+                    .catch(error => {
+                        console.log("No pudimos actualizar el stock", error);
+                        setError("Error al actualizar el stock");
+                    })
+            }
+        });
     }
 
     return (
@@ -115,13 +141,9 @@ const Checkout = () => {
                     <button className="miBtn checkout" disabled={carrito.length === 0}> Finalizar Orden </button>
                     <button className="miBtn checkout" type="reset"> Borrar </button>
                 </div>
-                {
-                    ordenId && <strong>¡Gracias por su compra! Tu número de orden es el siguiente: {ordenId} </strong>
-                }
-
             </form>
         </div>
     )
 }
 
-export default Checkout
+export default Checkout;
