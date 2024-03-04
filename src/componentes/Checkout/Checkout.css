@@ -35,3 +35,7 @@ input[type="email"] {
 .form-group {
     margin-bottom: 25px;
 }
+
+.contenedorCart hr {
+    margin-right: -20px;
+}
